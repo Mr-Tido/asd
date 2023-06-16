@@ -1,0 +1,12 @@
+{
+	"name": "@vityaz/database",
+	"author": "smoothbronx <vlad.uhwatov@yandex.ru>",
+	"license": "MIT",
+	"private": true,
+	"version": "1.0.0",
+	"scripts": {
+		"up": "docker compose -f docker-compose.yml --env-file ../../.env up -d",
+		"stop": "docker compose -f docker-compose.yml --env-file ../../.env down",
+		"start": "yarn stop && yarn up"
+	}
+}

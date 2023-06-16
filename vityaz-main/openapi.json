@@ -1,0 +1,2444 @@
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/api/users/info": {
+            "patch": {
+                "operationId": "UsersController_updateUserInformation",
+                "summary": "Обновление информации о текущем пользователе",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer access token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateUserDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Успешно обновлена информация о пользователе"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "UnauthorizedException": {
+                                        "description": "Пользователь поставил некорректный токен доступа",
+                                        "value": {
+                                            "statusCode": 401,
+                                            "message": "Invalid access token",
+                                            "error": "Unauthorized"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь поставил некорректный токен доступа",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid access token"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Пользователи"
+                ]
+            },
+            "get": {
+                "operationId": "UsersController_getUserInformation",
+                "summary": "Получение информации о текущем пользователе",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer access token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешно получена информация о пользователе",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDto"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "UnauthorizedException": {
+                                        "description": "Пользователь поставил некорректный токен доступа",
+                                        "value": {
+                                            "statusCode": 401,
+                                            "message": "Invalid access token",
+                                            "error": "Unauthorized"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь поставил некорректный токен доступа",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid access token"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Пользователи"
+                ]
+            }
+        },
+        "/api/products/brands": {
+            "get": {
+                "operationId": "ProductsController_getBrands",
+                "summary": "Получение брендов и их количества",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BrandsDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Товары"
+                ]
+            }
+        },
+        "/api/products/origins": {
+            "get": {
+                "operationId": "ProductsController_getOrigins",
+                "summary": "Получение стран производителей и их количества",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OriginsDto"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Товары"
+                ]
+            }
+        },
+        "/api/products": {
+            "post": {
+                "operationId": "ProductsController_createProduct",
+                "summary": "Создание товара (Admin Only)",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer access token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateProductDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Товар успешно создан",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProductDto"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "UnauthorizedException": {
+                                        "description": "Пользователь поставил некорректный токен доступа",
+                                        "value": {
+                                            "statusCode": 401,
+                                            "message": "Invalid access token",
+                                            "error": "Unauthorized"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь поставил некорректный токен доступа",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid access token"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "405": {
+                        "description": "У пользователя недостаточно прав"
+                    }
+                },
+                "tags": [
+                    "Товары",
+                    "Для администратора"
+                ]
+            }
+        },
+        "/api/products/filter": {
+            "post": {
+                "operationId": "ProductsController_getProducts",
+                "summary": "Получение всех товаров",
+                "description": "Фильтрация не обязательна",
+                "parameters": [],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProductFilterDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ProductDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Товары"
+                ]
+            }
+        },
+        "/api/products/{productId}": {
+            "get": {
+                "operationId": "ProductsController_getProduct",
+                "summary": "Получение определенного товара",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProductDto"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "NotFoundException": {
+                                        "description": "Товар не был найден",
+                                        "value": {
+                                            "statusCode": 404,
+                                            "message": "Product not found",
+                                            "error": "Not Found"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Товар не был найден",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 404
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Product not found"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Not Found"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Товары"
+                ]
+            },
+            "patch": {
+                "operationId": "ProductsController_updateProduct",
+                "summary": "Обновление товара (Admin Only)",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer access token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateProductDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Товар успешно обновлен"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "UnauthorizedException": {
+                                        "description": "Пользователь поставил некорректный токен доступа",
+                                        "value": {
+                                            "statusCode": 401,
+                                            "message": "Invalid access token",
+                                            "error": "Unauthorized"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь поставил некорректный токен доступа",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid access token"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "NotFoundException": {
+                                        "description": "Товар не был найден",
+                                        "value": {
+                                            "statusCode": 404,
+                                            "message": "Product not found",
+                                            "error": "Not Found"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Товар не был найден",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 404
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Product not found"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Not Found"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "405": {
+                        "description": "У пользователя недостаточно прав"
+                    }
+                },
+                "tags": [
+                    "Товары",
+                    "Для администратора"
+                ]
+            },
+            "delete": {
+                "operationId": "ProductsController_deleteProduct",
+                "summary": "Удаление товара (Admin Only)",
+                "parameters": [
+                    {
+                        "name": "productId",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer access token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Товар успешно удален"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "UnauthorizedException": {
+                                        "description": "Пользователь поставил некорректный токен доступа",
+                                        "value": {
+                                            "statusCode": 401,
+                                            "message": "Invalid access token",
+                                            "error": "Unauthorized"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь поставил некорректный токен доступа",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid access token"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "NotFoundException": {
+                                        "description": "Товар не был найден",
+                                        "value": {
+                                            "statusCode": 404,
+                                            "message": "Product not found",
+                                            "error": "Not Found"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Товар не был найден",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 404
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Product not found"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Not Found"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "405": {
+                        "description": "У пользователя недостаточно прав"
+                    }
+                },
+                "tags": [
+                    "Товары",
+                    "Для администратора"
+                ]
+            }
+        },
+        "/api/static/{filename}": {
+            "get": {
+                "operationId": "StaticController_getFile",
+                "summary": "Получение статики с сервера",
+                "parameters": [
+                    {
+                        "name": "filename",
+                        "required": true,
+                        "in": "path",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Файл был успешно получен",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "file": {
+                                            "type": "string",
+                                            "format": "binary"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Статика"
+                ]
+            }
+        },
+        "/api/support": {
+            "post": {
+                "operationId": "SupportController_sendSupportRequest",
+                "summary": "Отправка заявки на поддержку",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "description": "Данные заявки",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SupportRequestDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Заявка успешно отправлена"
+                    }
+                },
+                "tags": [
+                    "Поддержка"
+                ]
+            }
+        },
+        "/api/feedback": {
+            "post": {
+                "operationId": "SupportController_sendFeedback",
+                "summary": "Отправка отзыва",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "description": "Данные отзыва",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SupportRequestDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Отзыв успешно отправлена"
+                    }
+                },
+                "tags": [
+                    "Отзывы"
+                ]
+            }
+        },
+        "/api/orders": {
+            "get": {
+                "operationId": "OrdersController_getOrders",
+                "summary": "Получение всех заказов",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer access token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Получение всех заказов текущего пользователя",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/OrderDto"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "UnauthorizedException": {
+                                        "description": "Пользователь поставил некорректный токен доступа",
+                                        "value": {
+                                            "statusCode": 401,
+                                            "message": "Invalid access token",
+                                            "error": "Unauthorized"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь поставил некорректный токен доступа",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid access token"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Заказы"
+                ]
+            },
+            "post": {
+                "operationId": "OrdersController_createOrder",
+                "summary": "Создание заказа",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer access token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "Перечисление элементов из корзины, которые будут в заказе. Поле может быть пустым - тогда в заказ войдут все предметы из корзины",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CartItemsIdsDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Заказ был успешно создан"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "UnauthorizedException": {
+                                        "description": "Пользователь поставил некорректный токен доступа",
+                                        "value": {
+                                            "statusCode": 401,
+                                            "message": "Invalid access token",
+                                            "error": "Unauthorized"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь поставил некорректный токен доступа",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid access token"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Заказы"
+                ]
+            }
+        },
+        "/api/orders/{orderId}": {
+            "get": {
+                "operationId": "OrdersController_getOrder",
+                "summary": "Получение конкретного заказа",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer access token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "orderId",
+                        "required": true,
+                        "in": "path",
+                        "description": "Идентификатор заказа",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Получение указанного заказа",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/OrderDto"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "UnauthorizedException": {
+                                        "description": "Пользователь поставил некорректный токен доступа",
+                                        "value": {
+                                            "statusCode": 401,
+                                            "message": "Invalid access token",
+                                            "error": "Unauthorized"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь поставил некорректный токен доступа",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid access token"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "NotFoundException": {
+                                        "description": "Заказ с указанным идентификатором не был найден",
+                                        "value": {
+                                            "statusCode": 404,
+                                            "message": "Order not found",
+                                            "error": "Not Found"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Заказ с указанным идентификатором не был найден",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 404
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Order not found"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Not Found"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Заказы"
+                ]
+            },
+            "post": {
+                "operationId": "OrdersController_changeOrderStatus",
+                "summary": "Изменение статуса заказа",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer access token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "orderId",
+                        "required": true,
+                        "in": "path",
+                        "description": "Идентификатор заказа",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "Новый статус заказа",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/OrderStatusDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "204": {
+                        "description": "Статус заказа успешно изменяется"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "UnauthorizedException": {
+                                        "description": "Пользователь поставил некорректный токен доступа",
+                                        "value": {
+                                            "statusCode": 401,
+                                            "message": "Invalid access token",
+                                            "error": "Unauthorized"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь поставил некорректный токен доступа",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid access token"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "ForbiddenException": {
+                                        "description": "Пользователь не имеет прав выполнять данную операцию",
+                                        "value": {
+                                            "statusCode": 403,
+                                            "message": "You dont have enough rights to perform this operation",
+                                            "error": "Forbidden"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь не имеет прав выполнять данную операцию",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 403
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "You dont have enough rights to perform this operation"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Forbidden"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "NotFoundException": {
+                                        "description": "Заказ с указанным идентификатором не был найден",
+                                        "value": {
+                                            "statusCode": 404,
+                                            "message": "Order not found",
+                                            "error": "Not Found"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Заказ с указанным идентификатором не был найден",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 404
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Order not found"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Not Found"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Заказы",
+                    "Для администратора"
+                ]
+            }
+        },
+        "/api/cart": {
+            "get": {
+                "operationId": "CartsController_getCart",
+                "summary": "Получение корзины текущего пользователя",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer access token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Пользователь получает объект корзины",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CartDto"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "UnauthorizedException": {
+                                        "description": "Пользователь поставил некорректный токен доступа",
+                                        "value": {
+                                            "statusCode": 401,
+                                            "message": "Invalid access token",
+                                            "error": "Unauthorized"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь поставил некорректный токен доступа",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid access token"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Корзина"
+                ]
+            }
+        },
+        "/api/cart/{itemId}": {
+            "delete": {
+                "operationId": "CartsController_removeItemFromCart",
+                "summary": "Удаление элемента из корзины пользователя",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer access token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "itemId",
+                        "required": true,
+                        "in": "path",
+                        "description": "Идентификатор предмета корзины",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Пользователь успешно удалил элемент из корзины",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CartDto"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "UnauthorizedException": {
+                                        "description": "Пользователь поставил некорректный токен доступа",
+                                        "value": {
+                                            "statusCode": 401,
+                                            "message": "Invalid access token",
+                                            "error": "Unauthorized"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь поставил некорректный токен доступа",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid access token"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "NotFoundException": {
+                                        "description": "Элемент корзины с указанным идентификатором не найден",
+                                        "value": {
+                                            "statusCode": 404,
+                                            "message": "Cart item not found",
+                                            "error": "Not Found"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Элемент корзины с указанным идентификатором не найден",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 404
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Cart item not found"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Not Found"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Корзина"
+                ]
+            },
+            "patch": {
+                "operationId": "CartsController_setQuantityOfItem",
+                "summary": "Изменение количества позиции в корзине пользователя",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer access token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "itemId",
+                        "required": true,
+                        "in": "path",
+                        "description": "Идентификатор предмета корзины",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/QuantityDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Пользователь успешно обновил количество определенного предмета в корзине",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CartDto"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "UnauthorizedException": {
+                                        "description": "Пользователь поставил некорректный токен доступа",
+                                        "value": {
+                                            "statusCode": 401,
+                                            "message": "Invalid access token",
+                                            "error": "Unauthorized"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь поставил некорректный токен доступа",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid access token"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "NotFoundException": {
+                                        "description": "Элемент корзины с указанным идентификатором не найден",
+                                        "value": {
+                                            "statusCode": 404,
+                                            "message": "Cart item not found",
+                                            "error": "Not Found"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Элемент корзины с указанным идентификатором не найден",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 404
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Cart item not found"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Not Found"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Корзина"
+                ]
+            }
+        },
+        "/api/cart/products/{productId}": {
+            "post": {
+                "operationId": "CartsController_addProductToCart",
+                "summary": "Добавление товара в корзину пользователя",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer access token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "productId",
+                        "required": true,
+                        "in": "path",
+                        "description": "Идентификатор товара",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Пользователь успешно добавил товар в свою корзину"
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "UnauthorizedException": {
+                                        "description": "Пользователь поставил некорректный токен доступа",
+                                        "value": {
+                                            "statusCode": 401,
+                                            "message": "Invalid access token",
+                                            "error": "Unauthorized"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь поставил некорректный токен доступа",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid access token"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "NotFoundException": {
+                                        "description": "Продукт с указанным идентификатором не был найден",
+                                        "value": {
+                                            "statusCode": 404,
+                                            "message": "Product not found",
+                                            "error": "Not Found"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Продукт с указанным идентификатором не был найден",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 404
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Product not found"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Not Found"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Корзина"
+                ]
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "operationId": "AuthController_register",
+                "summary": "Регистрация пользователя в системе",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "description": "Реквизиты пользователя для регистрации",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RegisterDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "BadRequestException": {
+                                        "description": "Пользователь с таким адресом электронной почты уже существует",
+                                        "value": {
+                                            "statusCode": 400,
+                                            "message": "User with this email exists",
+                                            "error": "Bad Request"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь с таким адресом электронной почты уже существует",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 400
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User with this email exists"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Bad Request"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Аутентификация"
+                ]
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "operationId": "AuthController_login",
+                "summary": "Авторизация пользователя в системе или отправка кода",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "description": "Реквизиты пользователя для авторизации",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "anyOf": [
+                                    {
+                                        "$ref": "#/components/schemas/EmailLoginDto"
+                                    },
+                                    {
+                                        "$ref": "#/components/schemas/TraditionalLoginDto"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Пользователь успешно авторизовался в системе и получил пару токенов (Работает в случае использования традиционной авторизации)",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthTokensDto"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "UnauthorizedException #1": {
+                                        "description": "Неправильно введен адрес электронной почты",
+                                        "value": {
+                                            "statusCode": 401,
+                                            "message": "Incorrect email",
+                                            "error": "Unauthorized"
+                                        }
+                                    },
+                                    "UnauthorizedException #2": {
+                                        "description": "Неправильный пароль пользователя",
+                                        "value": {
+                                            "statusCode": 401,
+                                            "message": "Incorrect password",
+                                            "error": "Unauthorized"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Неправильно введен адрес электронной почты",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Incorrect email"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Аутентификация"
+                ]
+            }
+        },
+        "/api/auth/login/confirm": {
+            "post": {
+                "operationId": "AuthController_confirm",
+                "summary": "Подтверждение входа через отправленный код",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConfirmationDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Пользователь успешно авторизовался в системе и получил пару токенов",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthTokensDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "BadRequestException": {
+                                        "description": "Пользователь ввел неверный код подтверждения",
+                                        "value": {
+                                            "statusCode": 400,
+                                            "message": "Invalid confirmation code",
+                                            "error": "Bad Request"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь ввел неверный код подтверждения",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 400
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid confirmation code"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Bad Request"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "405": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "MethodNotAllowedException": {
+                                        "description": "Пользователю не было отправлено писем",
+                                        "value": {
+                                            "statusCode": 405,
+                                            "message": "User does not have confirmation mails",
+                                            "error": "Method Not Allowed"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователю не было отправлено писем",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 405
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User does not have confirmation mails"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Method Not Allowed"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Аутентификация"
+                ]
+            }
+        },
+        "/api/auth/refresh": {
+            "get": {
+                "operationId": "AuthController_refreshTokens",
+                "summary": "Продление сессии пользователя",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer refresh token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Пользователь успешно продлил свою сессию и получил новую пару токенов",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AuthTokensDto"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "content": {
+                            "application/json": {
+                                "examples": {
+                                    "UnauthorizedException": {
+                                        "description": "Пользователь поставил некорректный токен обновления сессии",
+                                        "value": {
+                                            "statusCode": 401,
+                                            "message": "Invalid refresh token",
+                                            "error": "Unauthorized"
+                                        }
+                                    }
+                                },
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Пользователь поставил некорректный токен обновления сессии",
+                                    "properties": {
+                                        "statusCode": {
+                                            "type": "number",
+                                            "example": 401
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Invalid refresh token"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "required": [
+                                        "statusCode",
+                                        "message"
+                                    ]
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "Аутентификация"
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "Магазин «Витязь»",
+        "description": "",
+        "version": "1.0",
+        "contact": {}
+    },
+    "tags": [
+        {
+            "name": "Аутентификация",
+            "description": ""
+        },
+        {
+            "name": "Для администратора",
+            "description": ""
+        },
+        {
+            "name": "Товары",
+            "description": ""
+        },
+        {
+            "name": "Пользователи",
+            "description": ""
+        },
+        {
+            "name": "Корзина",
+            "description": ""
+        },
+        {
+            "name": "Заказы",
+            "description": ""
+        }
+    ],
+    "servers": [],
+    "components": {
+        "schemas": {
+            "UpdateUserDto": {
+                "type": "object",
+                "properties": {
+                    "firstname": {
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "readOnly": true
+                    },
+                    "firstname": {
+                        "type": "string"
+                    },
+                    "lastname": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "firstname",
+                    "lastname",
+                    "email"
+                ]
+            },
+            "BrandsDto": {
+                "type": "object",
+                "properties": {
+                    "brands": {
+                        "readOnly": true,
+                        "type": "array",
+                        "items": {
+                            "type": "array"
+                        }
+                    },
+                    "total": {
+                        "type": "number",
+                        "readOnly": true
+                    }
+                },
+                "required": [
+                    "brands",
+                    "total"
+                ]
+            },
+            "OriginsDto": {
+                "type": "object",
+                "properties": {
+                    "origins": {
+                        "readOnly": true,
+                        "type": "array",
+                        "items": {
+                            "type": "array"
+                        }
+                    },
+                    "total": {
+                        "type": "number",
+                        "readOnly": true
+                    }
+                },
+                "required": [
+                    "origins",
+                    "total"
+                ]
+            },
+            "CreateProductDto": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number"
+                    },
+                    "brand": {
+                        "type": "string"
+                    },
+                    "origin": {
+                        "type": "string"
+                    },
+                    "file": {
+                        "type": "object",
+                        "writeOnly": true
+                    }
+                },
+                "required": [
+                    "name",
+                    "price",
+                    "brand",
+                    "origin",
+                    "file"
+                ]
+            },
+            "ProductDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "readOnly": true
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number"
+                    },
+                    "brand": {
+                        "type": "string"
+                    },
+                    "origin": {
+                        "type": "string"
+                    },
+                    "picture": {
+                        "type": "string",
+                        "readOnly": true
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "price",
+                    "brand",
+                    "origin",
+                    "picture"
+                ]
+            },
+            "ProductFilterPriceDto": {
+                "type": "object",
+                "properties": {
+                    "upper": {
+                        "type": "number",
+                        "writeOnly": true,
+                        "description": "Верхний барьер цены"
+                    },
+                    "lower": {
+                        "type": "number",
+                        "writeOnly": true,
+                        "description": "Нижний барьер цены"
+                    }
+                },
+                "required": [
+                    "upper",
+                    "lower"
+                ]
+            },
+            "ProductFilterDto": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "$ref": "#/components/schemas/ProductFilterPriceDto"
+                    },
+                    "origins": {
+                        "type": "array",
+                        "items": {
+                            "type": "array"
+                        }
+                    },
+                    "brands": {
+                        "type": "array",
+                        "items": {
+                            "type": "array"
+                        }
+                    }
+                }
+            },
+            "UpdateProductDto": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "number"
+                    },
+                    "brand": {
+                        "type": "string"
+                    },
+                    "origin": {
+                        "type": "string"
+                    }
+                }
+            },
+            "SupportRequestDto": {
+                "type": "object",
+                "properties": {
+                    "firstname": {
+                        "type": "string",
+                        "description": "Имя",
+                        "example": "Иван",
+                        "writeOnly": true
+                    },
+                    "lastname": {
+                        "type": "string",
+                        "description": "Фамилия",
+                        "example": "Иванов",
+                        "writeOnly": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "Адрес электронной почты пользователя",
+                        "example": "smoothbronx@xenofium.com",
+                        "writeOnly": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "Сообщение",
+                        "example": "Помогите!!..",
+                        "writeOnly": true
+                    }
+                },
+                "required": [
+                    "firstname",
+                    "lastname",
+                    "email",
+                    "message"
+                ]
+            },
+            "OrderItemDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Идентификатор элемента",
+                        "readOnly": true
+                    },
+                    "product": {
+                        "description": "Товар",
+                        "readOnly": true,
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/ProductDto"
+                            }
+                        ]
+                    },
+                    "quantity": {
+                        "type": "number",
+                        "description": "Количество товара",
+                        "readOnly": true
+                    },
+                    "price": {
+                        "type": "number",
+                        "description": "Цена позиции",
+                        "readOnly": true
+                    }
+                },
+                "required": [
+                    "id",
+                    "quantity",
+                    "price"
+                ]
+            },
+            "OrderDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Уникальный идентификатор заказа пользователя",
+                        "nullable": false,
+                        "readOnly": true
+                    },
+                    "items": {
+                        "description": "Элементы заказа",
+                        "nullable": false,
+                        "readOnly": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/OrderItemDto"
+                        }
+                    },
+                    "totalPrice": {
+                        "type": "number",
+                        "description": "Общая стоимость товаров в заказе",
+                        "nullable": false,
+                        "readOnly": true
+                    }
+                },
+                "required": [
+                    "id",
+                    "items",
+                    "totalPrice"
+                ]
+            },
+            "OrderStatusDto": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "description": "Новый статус заказа",
+                        "writeOnly": true,
+                        "nullable": false,
+                        "examples": [
+                            [
+                                "created",
+                                "processing",
+                                "sent",
+                                "delivered",
+                                "rejected"
+                            ]
+                        ]
+                    }
+                },
+                "required": [
+                    "status"
+                ]
+            },
+            "CartItemsIdsDto": {
+                "type": "object",
+                "properties": {
+                    "ids": {
+                        "description": "Перечисление идентификаторов элементов, которые попадут в заказ",
+                        "type": "array",
+                        "items": {
+                            "type": "array"
+                        }
+                    }
+                }
+            },
+            "CartItemDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Уникальный идентификатор элемента корзины",
+                        "nullable": false,
+                        "readOnly": true
+                    },
+                    "product": {
+                        "description": "Товар, который пользователь покупает",
+                        "readOnly": true,
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/ProductDto"
+                            }
+                        ]
+                    },
+                    "quantity": {
+                        "type": "number",
+                        "description": "Количество конкретно этого товара",
+                        "nullable": false,
+                        "readOnly": true
+                    },
+                    "price": {
+                        "type": "number",
+                        "description": "Цена конкретно этого товара с учетом его количества",
+                        "nullable": false,
+                        "readOnly": true
+                    }
+                },
+                "required": [
+                    "id",
+                    "product",
+                    "quantity",
+                    "price"
+                ]
+            },
+            "CartDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Уникальный идентификатор корзины пользователя",
+                        "nullable": false,
+                        "readOnly": true
+                    },
+                    "items": {
+                        "description": "Элементы корзины",
+                        "nullable": false,
+                        "readOnly": true,
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CartItemDto"
+                        }
+                    },
+                    "totalPrice": {
+                        "type": "number",
+                        "description": "Общая стоимость товаров в корзине",
+                        "nullable": false,
+                        "readOnly": true
+                    }
+                },
+                "required": [
+                    "id",
+                    "items",
+                    "totalPrice"
+                ]
+            },
+            "QuantityDto": {
+                "type": "object",
+                "properties": {
+                    "quantity": {
+                        "type": "number",
+                        "description": "Новое количество товара в корзине",
+                        "writeOnly": true
+                    }
+                },
+                "required": [
+                    "quantity"
+                ]
+            },
+            "RegisterDto": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "example": "smoothbronx@xenofium.com",
+                        "writeOnly": true
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "SomePassword1",
+                        "writeOnly": true
+                    }
+                },
+                "required": [
+                    "email",
+                    "password"
+                ]
+            },
+            "EmailLoginDto": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "Адрес электронной почты пользователя"
+                    }
+                },
+                "required": [
+                    "email"
+                ]
+            },
+            "TraditionalLoginDto": {
+                "type": "object",
+                "properties": {
+                    "string": {
+                        "type": "string",
+                        "example": "smoothbronx@xenofium.com",
+                        "writeOnly": true
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "SomePassword1",
+                        "writeOnly": true
+                    }
+                },
+                "required": [
+                    "string",
+                    "password"
+                ]
+            },
+            "AuthTokensDto": {
+                "type": "object",
+                "properties": {
+                    "accessToken": {
+                        "type": "string",
+                        "readOnly": true
+                    },
+                    "refreshToken": {
+                        "type": "string",
+                        "readOnly": true
+                    }
+                },
+                "required": [
+                    "accessToken",
+                    "refreshToken"
+                ]
+            },
+            "ConfirmationDto": {
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "Электронный адрес пользователя",
+                        "writeOnly": true
+                    },
+                    "code": {
+                        "type": "number",
+                        "description": "Код, прилетевший на его почту",
+                        "writeOnly": true
+                    }
+                },
+                "required": [
+                    "email",
+                    "code"
+                ]
+            }
+        }
+    }
+}

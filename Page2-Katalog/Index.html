@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Каталог</title>
+</head>
+<body>
+  <div class="Page_Container">
+  <header id="header">
+        <div class="Header_container">
+          
+         <div class="header_logo">
+            <a href="/Page1/Index.html"><img class="logo" src="/Page1/Photo_magaz/firefox_YGGfC6LXu5.png" alt=""></a>
+          </div>
+        <div class="katalog_container">
+          <div class="katalog">
+            <div class="katalog_id">
+            <a id="burger" href="">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="a2-e">
+              <path fill="currentColor" d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm2 0a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Zm0 6a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H8a1 1 0 0 1-1-1Zm1 5a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H8Zm-4-4a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm1 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z">
+              </path>
+            </svg>
+            </a>
+            <a href="/Page2-Katalog/Index.html" class="katalog_text">каталог</a>
+            </div>
+          </div>
+        </div>
+          <div class="Poisk">
+            <input class="Search" type="text" placeholder="Искать в каталоге">
+            <div class="Search_mini">
+              <button class="fa">
+                <i class="fa-vk"><img src="Partners/pngwing.com(16).png" width="30px" alt=""></i>
+              </button>
+            </div>
+            </div>
+          <div class="navigate">
+            <button class="button_nav_link" id="" href=""> <img id="open-modal-btn" src="/Page1/Partners/Профиль.png" width="30px" alt=""> Войти</button >
+            <a class="nav_link" href=""> <img id="nav_photo" src="/Page1/Partners/Коробка.png" width="30px" alt=""> Заказы</a>
+            <a class="nav_link" href=""> <img id="nav_photoa" src="/Page1/Partners/Корзина.png" width="30px" alt=""> Корзина</a>
+          <div>
+              
+            </div>
+          </div>
+          </div>
+  </header>
+        
+
+
+        <!-- Модалка -->
+        <div class="modal" id="my-modal">
+          <div class="modal__box">
+              <button class="modal__close-btn" id="close-my-modal-btn">
+                  <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2.09082 0.03125L22.9999 22.0294L20.909 24.2292L-8.73579e-05 2.23106L2.09082 0.03125Z"
+                          fill="#333333" />
+                      <path d="M0 22.0295L20.9091 0.0314368L23 2.23125L2.09091 24.2294L0 22.0295Z" fill="#333333" />
+                  </svg>
+              </button>
+               <div class="modal_text">
+                <h3>Войти <br> или зарегестрироваться</h3>
+                </div>
+                <div class="modal_container">
+                  <div class="modal__input">
+                      <input class="input_email" type="text" placeholder="E-mail">
+                  </div>
+                  <div class="modal__button">
+                    <button class="button_seting">Получить код</button>
+                  </div>
+                </div>
+                <div class="te1">Другие способы входа:</div>
+                <div class="bo1">
+                  <img class="im1" src="/Page1/photo2/pngwing.com(20).png" alt="">
+                  <button class="Other_ways_to_enter" id="pasword">Войти с паролем</button>
+                </div>
+          </div>
+        </div>
+        
+        <div class="modal" id="my-modal1">
+          <div class="modal__box">
+              <button class="modal__close-btn" id="close-my-modal-btn1">
+                  <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2.09082 0.03125L22.9999 22.0294L20.909 24.2292L-8.73579e-05 2.23106L2.09082 0.03125Z"
+                          fill="#333333" />
+                      <path d="M0 22.0295L20.9091 0.0314368L23 2.23125L2.09091 24.2294L0 22.0295Z" fill="#333333" />
+                  </svg>  
+              </button>
+               <div class="modal_text">
+                <h3>Войти с паролем</h3>
+                </div>
+                <div class="modal_container">
+                  <div class="modal__input">
+                      <input class="input_email" type="text" placeholder="E-mail">
+                  </div>
+                  <div class="modal__input">
+                    <input class="input_pasword" type="text" placeholder="Pasword">
+                  </div>
+                  <div class="modal__button">
+                    <button onclick=" document.location='/Personal/United.html'" id="pas" class="button_seting">Войти</button>
+                  </div>
+                </div>
+          </div>
+        </div>
+
+
+        <!-- Sort  -->
+      <div class="all_conteiner">
+       <div class="sort">
+         <div class="cost_conteriner">
+          <div class="cost"><span class="pp">Цена,₽</span></div>
+            <div class="From_and_To">
+
+              <div class="sort_cost">
+                <div class="cost_span"><span>От</span></div>
+                <div> <input id="ss" class="sort_text" type="text"></div>
+              </div>
+
+              <div class="sort_cost">
+                <div class="cost_span"><span>До</span></div>
+                <div> <input id="ss1" class="sort_text" type="text"></div></div>
+              </div>
+
+            </div>
+        </div>
+
+
+<!-- Tovar -->
+          <section class="body_container">
+              <div class="body_content">
+
+                <div class="catalog" id="catalog">
+
+                </div>
+
+          
+              </div>
+            </section>
+
+
+        <template id="place-card">
+          <li class="card">
+           <img class="card__image" src="https://goods-photos.static1-sima-land.com/items/7009596/0/1600.jpg?v=1675429872">
+           <h2 class="card__name">NIKE Shoe</h2>
+           <p class="card__title card__title_title">Amazon product - size 6 multiДорогиеaaaaa друзья, курс на социально ориентasdasda  фывфывфывфывфывaaaaaaa</p>
+            <p class="card__title card__title_prise">USD 50</p>
+        <div class="card__container-button">
+           <button class="card__button_add">Добавить</button>
+           <button class="card__button_detailed">Подробнее</button>
+          </div>
+         </li>
+       </template>
+        </div>
+      </div>
+  <script type="module" src="script/index.js" defer></script>
+</body>
+</html>

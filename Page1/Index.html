@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="swiper-bundle.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Главная</title>
+</head>
+<body>
+<!-- Header -->
+<div class="Page_container">
+<header>
+<section class="container">
+  <div class="left">
+    <div class="logo"><a href=""><img class="logo_img" src="Photo_magaz/firefox_YGGfC6LXu5.png" alt=""></a></div>
+  <div class="text_container">
+    <div class="text1">
+      <p>Интрументы для <br>творчества, игры и дома - <br> Все в одном месте!</p>
+    </div>
+    <div class="text2">
+      <p>Добро пожаловать в нашу компанию, где мы сочетаем все, 
+        что нужно для вашего дома, творческих проектов и активного отдыха. 
+        Мы гордимся тем, что предлагаем широкий ассортимент товаров для всех возрастов и интересов.
+      </p>
+    </div>
+  </div>
+  <form id="search-form">
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Поиск по каталогу">
+      <button type="submit" id="search-button">
+        <p>Искать</p>
+        <img class="btn_img" src="Partners/pngegg(1).png" alt="">
+      </button>
+    </div>
+  </form>
+
+  <div id="partners">
+    <p class="textP">Наши партнеры</p>
+        <div class="partners_Photo">
+          <img class="partners_img" src="/Page1/Partners/dummy.png" alt="">
+          <img class="partners_img" src="/Page1/Partners/ce1557a3-717e-4c28-943d-de4de018fd28.jpg" alt="">
+          <img class="partners_img" src="/Page1/Partners/Logo_Мир_инструмента.png" alt="">
+          <img class="partners_img" src="/Page1/Partners/sima-lend-465x260.jpg" alt="">
+        </div>
+      </div>
+  </div>
+
+
+  <div class="right">
+    <div class="top">
+    <nav>
+      <ul class="li_container">
+        <li><a class="nav_name1" href="#Benefits">О нас</a></li>
+        <li><a class="nav_name1" href="#Reviews">Отзывы</a></li>
+        <li><a class="nav_name" href="/Page2-Katalog/Index.html">Наш Ассортимент&curlyvee;</a>
+          <ul class="List">
+            <li><a href="">Игрушки</a></li>
+            <li><a href="">Канцелярия</a></li>
+            <li><a href="">Все для дома</a></li>
+        </ul>
+      </li>
+    </ul>
+        
+        <button class="nav_btn" id="open-modal-btn">Войти</button>
+      </nav>
+    </div>
+    <div class="bottom">
+      <div class="People">
+        <div class="left_pep">
+         <img class="People_photo1" src="/Page1/photo2/500+ Товаров/Ellipse 4(1).png" alt="">
+         <img class="People_photo2" src="/Page1/photo2/500+ Товаров/Ellipse 5.png" alt="">
+         <img class="People_photo3" src="/Page1/photo2/500+ Товаров/Ellipse 6.png" alt="">
+        </div>
+
+        <div class="right_pep">
+          <p class="text_pep1">500+ Товаров</p>
+          <P class="text_pep2">На любой вкус</P>
+        </div>
+      </div>  
+
+      <div class="Tovars">
+        <div class="Tovars_left">
+          <img src="/Page1/photo2/500+ Товаров/Rectangle 12(1).png" alt="">
+        </div>
+        <div class="Tovars_right">
+          <p class="TovarText1">Никакого б/у</p>
+          <p class="TovarText2">Только новые товары!</p>
+        </div>
+      </div> 
+    </div>
+      
+    </div>
+  </div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal" id="my-modal">
+          <div class="modal__box">
+              <button class="modal__close-btn" id="close-my-modal-btn">
+                  <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2.09082 0.03125L22.9999 22.0294L20.909 24.2292L-8.73579e-05 2.23106L2.09082 0.03125Z"
+                          fill="#333333" />
+                      <path d="M0 22.0295L20.9091 0.0314368L23 2.23125L2.09091 24.2294L0 22.0295Z" fill="#333333" />
+                  </svg>
+              </button>
+               <div class="modal_text">
+                <h3>Войти <br> или зарегестрироваться</h3>
+                </div>
+                <div class="modal_container">
+                  <div class="modal__input">
+                      <input class="input_email1" type="text" placeholder="E-mail">
+                  </div>
+                  <div class="modal__button">
+                    <button class="button_seting">Получить код</button>
+                  </div>
+                </div>
+                <div class="te1">Другие способы входа:</div>
+                <div class="bo1">
+                  <img class="im1" src="/Page1/photo2/pngwing.com(20).png" alt="">
+                  <button class="Other_ways_to_enter" id="pasword">Войти с паролем</button>
+                </div>
+          </div>
+        </div>
+        <div class="modal" id="my-modal1">
+          <div class="modal__box">
+              <button class="modal__close-btn" id="close-my-modal-btn1">
+                  <svg width="23" height="25" viewBox="0 0 23 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2.09082 0.03125L22.9999 22.0294L20.909 24.2292L-8.73579e-05 2.23106L2.09082 0.03125Z"
+                          fill="#333333" />
+                      <path d="M0 22.0295L20.9091 0.0314368L23 2.23125L2.09091 24.2294L0 22.0295Z" fill="#333333" />
+                  </svg>  
+              </button>
+               <div class="modal_text">
+                <h3>Войти с паролем</h3>
+                </div>
+                <div class="modal_container">
+                  <form id="mars-once" method="POST">
+                    <div class="modal__input">
+                      <input name="emaile" class="input_email2"  value="" type="text" placeholder="E-mail" id="emil">
+                    </div>
+                    <div class="modal__input">
+                      <input name="password" class="input_pasword"  value="" type="text" placeholder="Pasword">
+                    </div>
+                    <div class="modal__button">
+                      <button type="submit" id="pas" class="button_seting">Войти</button>
+                    </div>
+                  </form>
+                </div>
+          </div>
+        </div>
+</header>
+
+<!-- Product -->
+<section class="OurProducts">
+  <div class="OurText">
+    <h1>Наши Товары</h1>
+  </div>
+
+  <div class="container_home">
+    <div class="home">
+      <button class="home_text button-home " href=""><img class="img_home" src="/Page1/photo2/500+ Товаров/pngwing.com(25).png" alt=""> Все для дома</button>
+    </div>
+
+    <div class="games">
+      <button class="games_text button-games" href=""><img class="img_games" src="/Page1/photo2/pngwing.com(22).png" alt=""> Игрушки</button>
+    </div>
+
+    <div class="Stationery">
+      <button class="Stationery_text button-stationery" href=""><img class="img_Stationery" src="/Page1/photo2/Vector(1).png" alt=""> Канцелярия</button>
+    </div>
+  </div>
+</section>
+<!-- Слайдер 1 -->
+    <div class="items slide1">
+      <div class="item active">
+        <img class="item_img" src="/Page1/slider_img/Rectangle 15.png" alt="">
+          <p class="p1">Краска в наличие</p>
+      </div>
+      <div class=" item next">
+        <img class="item_img" src="/Page1/slider_img/Rectangle 15(1).png" alt="">
+          <p class="p1">Линолеум</p>
+      </div>
+      <div class="item">
+        <img class="slider_img" src="/Page1/slider_img/Rectangle 15(2).png" alt="">
+          <p class="p1">Двери</p>
+      </div>
+      <div class="item">
+        <img class="slider_img" src="https://ixbt.online/live/images/original/04/23/83/2020/09/03/aa3cc6e689.jpg" alt="">
+        <p class="p1">Электроинструмент</p>
+      </div>
+      <div class="item prev">
+        <img class="slider_img" src="https://portaprima.ru/upload/medialibrary/6b6/6b68a057ccef119e4cdbbbd2e2e061bd.jpg" alt="">
+        <p class="p1">Плинтуса</p>
+      </div>
+      <div class="button-container">
+        <div class="button"><p class="text_prev"><</p></div>
+        <div class="button"><p class="text_next">></p></div>
+      </div>
+    </div>
+
+    <!-- Слайдер 2 -->
+    <div class="items slide2 slide-none">
+      <div class="item active">
+        <img class="item_img" src="https://nashaigrushka.ru/upload/catalog/939488/939488.jpg" alt="">
+          <p class="p1">Игрушки для малышей</p>
+      </div>
+      <div class=" item next">
+        <img class="item_img" src="https://avatars.mds.yandex.net/get-mpic/1525215/img_id3221052624698818549.jpeg/orig" alt="">
+          <p class="p1">Конструктора</p>
+      </div>
+      <div class="item">
+        <img class="slider_img" src="https://img.ixbt.site/live/images/original/04/53/99/2021/04/12/9c0eb91c1a.jpg?w=877" alt="">
+          <p class="p1">Наборы для творчества</p>
+      </div>
+      <div class="item">
+        <img class="slider_img" src="https://my-dolls.ru/pictures/product/big/7358_big.jpg" alt="">
+        <p class="p1">Куклы</p>
+      </div>
+      <div class="item prev">
+        <img class="slider_img" src="https://images.inteltoys.ru/500x500/products/2022/10/40108_63a5bafbb1e05.jpg" alt="">
+        <p class="p1">Наборы для игр</p>
+      </div>
+      <div class="button-container">
+        <div class="button"><p class="text_prev"><</p></div>
+        <div class="button"><p class="text_next">></p></div>
+      </div>
+    </div>
+    
+<!-- Слайде 3  -->
+<div class="items slide3 slide-none">
+  <div class="item active">
+    <img class="item_img" src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Notebooks-rainbow.jpg" alt="">
+      <p class="p1">Школьные тетради</p>
+  </div>
+  <div class=" item next">
+    <img class="item_img" src="https://static.detmir.st/media_out/701/147/3147701/1500/0.jpg?1652264510216" alt="">
+      <p class="p1">Ранцы</p>
+  </div>
+  <div class="item">
+    <img class="slider_img" src="https://krasniykarandash.ru/upload/iblock/b1d/b1d9fb4559ce90e8d9c993c6d80ff806.jpg" alt="">
+      <p class="p1">Цветная бумага </p>
+  </div>
+  <div class="item">
+    <img class="slider_img" src="https://goods-photos.static1-sima-land.com/items/6636917/0/400.jpg?v=1647507426" alt="">
+    <p class="p1">Пеналы</p>
+  </div>
+  <div class="item prev">
+    <img class="slider_img" src="https://kupislona-store.ru/sites/default/files/styles/800x800/public/avtomaticheskaya-ruchka-genshin-impact.jpg?itok=XyAEN4dE" alt="">
+    <p class="p1">Ручки</p>
+  </div>
+  <div class="button-container">
+    <div class="button"><p class="text_prev"><</p></div>
+    <div class="button"><p class="text_next">></p></div>
+  </div>
+</div>
+<!-- map -->
+    <section class="map">
+      <p class="MminiText"> —— Местоположение</p>
+      <div class="map_container">
+        <duv class="map_left">
+          <h2>Как До Нас Добраться!</h2>
+          <p class="nas">О нас в деталях:</p>
+        <div class="bottom_container">
+          <div class="bottom_map1">
+            
+             <div>
+              <img src="" alt="">
+              <p class="bottomn_text">Время работы: 9:00 - 19:00</p>
+             </div>
+
+             <div>
+              <img src="" alt="">
+              <P class="bottomn_text">Не далеко добираться</P>
+             </div> 
+          </div>
+
+          <div class="bottom_map2">
+             <div>
+              <img src="" alt="">
+              <p class="bottomn_text">shopvitiaz@gmail.com</p>
+             </div>
+
+             <div>
+              <img src="" alt="">
+              <P class="bottomn_text">+7962955868</P>
+             </div> 
+          </div>
+       
+        </div>  
+        <div class="otstup"></div>
+          <a id="call" href=""><div class="bottom_klick"><img src="/Page1/Как до Нас добраться/Vector(2).png" alt="">Связаться сейчас</div></a>
+        </duv>
+         
+        <duv class="map_right">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d151.94952898144598!2d130.85136210935286!3d52.45754174802045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5e91334f7635b199%3A0xaed23168bdb652df!2z0JzQsNCz0LDQt9C40L0g0JLQuNGC0Y_Qt9GM!5e0!3m2!1sru!2sru!4v1686752257678!5m2!1sru!2sru" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></iframe>
+        </duv>
+      </div>
+    </section>
+<!-- Reviews -->
+    <section class="Reviews" id="Reviews">
+      <div class="yellow_container">
+        <div class="yellow_block">
+          <p class="text_reviews">Наши Отзывы</p>
+          <h4>Что кленты говорят о нас</h4>
+        </div>
+      </div>
+   
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img class="swiper-img" src="/Page1/Photo_magaz/DSC00562(2).JPG" alt="">
+            <div class="swiper-text">
+              <div class="comment_container">
+                <h1 class="comment1">Я хотел бы выразить благодарность магазину Витязь</h1>
+                <p class="comment_text">Промышленный магазин "Витязь" - идеальное место для профессионалов и любителей своего дела. 
+                  Здесь я нашел все необходимое для моего проекта: инструменты, расходные материалы и оборудование.
+                   Широкий ассортимент товаров, высокое качество и конкурентоспособные цены - это то, что отличает "Витязь" от других магазинов.</p>
+              </div>
+              <div class="Commentator2">
+                <img src="https://hsts.spbstu.ru/userfiles/images/person/alumnus/Lazurenk.jpg" alt="">
+                <p class="Smernova">Иван Козлов</p>  
+                <div id="star">
+                  ⭐ 4.9
+                </div>
+                </div>
+            </div>
+          </div>
+       
+          <div class="swiper-slide">
+            <img class="swiper-img" src="/Page1/Photo_magaz/DSC00553.JPG" alt="">
+            <div class="swiper-text">
+              <div class="comment_container">
+                <h1 class="comment1">Лучшие! Не ожидала такого сервиса и качества товаров</h1>
+                <p class="comment_text">Пришли с ребенком закупиться перед школй ручками и пеналами, 
+                  по итогу ушли еще и с большим количеством игрушек и с положительным настроем, 
+                  консультант подсказал что лучше выбрать, качественно проконсультировал</p>
+              </div>
+              <div class="Commentator">
+              <img src="/Page1/slider_img/Ellipse 6(1).png" alt="">
+              <p class="Smernova">Анастасия Смирнова</p>  
+              <div id="star">
+                ⭐ 4.6
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img class="swiper-img" src="/Page1/Photo_magaz/DSC00553.JPG" alt="">
+            <div class="swiper-text">
+              <div class="comment_container">
+                <h1 class="comment1">Лучшие! Не ожидала такого сервиса и качества товаров</h1>
+                <p class="comment_text">Пришли с ребенком закупиться перед школй ручками и пеналами, 
+                  по итогу ушли еще и с большим количеством игрушек и с положительным настроем, 
+                  консультант подсказал что лучше выбрать, качественно проконсультировал</p>
+              </div>
+              <div class="Commentator">
+              <img src="/Page1/slider_img/Ellipse 6(1).png" alt="">
+              <p class="Smernova">Анастасия Смирнова</p>  
+              <div id="star">
+                ⭐ 4.6
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img class="swiper-img" src="/Page1/Photo_magaz/DSC00553.JPG" alt="">
+            <div class="swiper-text">
+              <div class="comment_container">
+                <h1 class="comment1">Лучшие! Не ожидала такого сервиса и качества товаров</h1>
+                <p class="comment_text">Пришли с ребенком закупиться перед школй ручками и пеналами, 
+                  по итогу ушли еще и с большим количеством игрушек и с положительным настроем, 
+                  консультант подсказал что лучше выбрать, качественно проконсультировал</p>
+              </div>
+              <div class="Commentator">
+              <img src="/Page1/slider_img/Ellipse 6(1).png" alt="">
+              <p class="Smernova">Анастасия Смирнова</p>  
+              <div id="star">
+                ⭐ 4.6
+              </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="swiper-slide">
+            <img class="swiper-img" src="/Page1/Photo_magaz/DSC00553.JPG" alt="">
+            <div class="swiper-text">
+              <div class="comment_container">
+                <h1 class="comment1">Лучшие! Не ожидала такого сервиса и качества товаров</h1>
+                <p class="comment_text">Пришли с ребенком закупиться перед школй ручками и пеналами, 
+                  по итогу ушли еще и с большим количеством игрушек и с положительным настроем, 
+                  консультант подсказал что лучше выбрать, качественно проконсультировал</p>
+              </div>
+              <div class="Commentator">
+              <img src="/Page1/slider_img/Ellipse 6(1).png" alt="">
+              <p class="Smernova">Анастасия Смирнова</p>  
+              <div id="star">
+                ⭐ 4.6
+              </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <img class="swiper-img" src="/Page1/Photo_magaz/DSC00553.JPG" alt="">
+            <div class="swiper-text">
+              <div class="comment_container">
+                <h1 class="comment1">Лучшие! Не ожидала такого сервиса и качества товаров</h1>
+                <p class="comment_text">Пришли с ребенком закупиться перед школй ручками и пеналами, 
+                  по итогу ушли еще и с большим количеством игрушек и с положительным настроем, 
+                  консультант подсказал что лучше выбрать, качественно проконсультировал</p>
+              </div>
+              <div class="Commentator">
+              <img src="/Page1/slider_img/Ellipse 6(1).png" alt="">
+              <p class="Smernova">Анастасия Смирнова</p>  
+              <div id="star">
+                ⭐ 4.6
+              </div>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+        <div class="swiper-pagination"></div>
+     </div>
+
+    </section>
+
+
+    
+<!-- Benefits -->
+    <section class="Benefits" id="Benefits">
+      <div class="yellow_container">
+        <div class="yellow_block">
+          <p class="text_reviews">Что мы можем рассказать о себе?</p>
+          <h4>Наши премущества</h4>
+        </div>
+      </div>
+        <div class="Benefits_container">
+          <div class="Benefits_left">
+            <div class="Bene_Photo">
+              <img class="Bene_img" src="/Page1/Benefits/335.jpg" alt="">
+              <p class="Bene_text" >Дружный и слаженный временем коллектив</p>
+            </div>
+            <div class="Bene_Photo">
+              <img class="Bene_img" src="/Page1/Benefits/sl_033020_29450_27.jpg" alt="">
+              <p class="Bene_text">Низкие цены по сравнениею с конкуретнами</p>
+            </div>
+            <div class="Bene_Photo">
+              <img class="Bene_img" src="/Photo/7e67d5d254f6e82bfe8dd878518ffddd.jpg" alt="">
+              <p class="Bene_text">Бесперебойные и быстрые поставки товаров</p>
+            </div>
+          </div>
+          <div class="Benefits_right">
+            <div class="Bene_text_container">
+              <img class="Bene_img2" src="/Page1/Benefits/Rectangle 23.png" alt="">
+              <p class="Bene_text2">Новейшие товары от топовых производителей</p>
+              <p class="Bene_text3">У нас вы найдете все, что нужно для комфорта, стиля и инноваций.
+                 Будьте в тренде с нашими последними моделями электроники, высококачественной техникой и фирменными аксессуарами. 
+                 У нас есть все, чтобы удовлетворить самые изысканные вкусы и потребности.</p>
+            </div>
+          </div>
+        </div>        
+    </section>
+<!-- application -->
+    <section class="application">
+      <div class="application_container">
+        <div>
+          <p class="application_text">
+            Оставьте заявку на заказ и <br> мы его вам обязательно доставим
+          </p>
+        </div>
+
+        <div class="input_container">
+          <div class="mini_container1">
+            <input class="Name" type="text"  placeholder="Ваше Имя">
+            <input class="E-mail" type="text" placeholder="Ваша почта">
+          </div>
+
+          <div class="textarea_container">
+            <textarea  name="" id="textarea_input" cols="30" rows="10" placeholder="Коментарий к заказу"></textarea>
+          </div>
+          <div class="textarea_button">
+            <button class="send">Отправить</button>
+          </div>
+        </div>
+      </div>
+    </section>
+<!-- footer -->
+    <footer>
+      <div class="footer_left">
+        <div>
+          <p class="footer_text">Хотите получать актуальные новости о 
+            поступлении товара? </p>
+        </div>  
+        <p class="footer_text1">Оставьте свою почту для получения рассылки!</p>
+        <div class="input_min">
+          <input class="footer_input" type="text" placeholder="Ваша почта">
+          <button type="submit" class="search-button">
+          <p>Искать</p>
+        <img class="btn_img" src="Partners/pngegg(1).png" alt="">
+        </div>
+        
+        </div>
+        
+      <div class="footer_right">
+        <div class="right_container">
+          <div class="d1">
+            <p class="d1_text">Ассортимент</p>
+            <a class="d2_text" href="">Концелярия</a>
+            <a class="d2_text" href="">Игрушки</a>
+            <a class="d2_text" href="">Все Для Дома</a>
+          </div>
+
+          <div class="d1">
+            <p class="d1_text">Соц сети</p>
+            <a class="d2_text" href="">Вк</a>
+            <a class="d2_text" href="">Ватсап</a>
+            <a class="d2_text" href="">Телега</a>
+          </div>
+
+          <div class="d1">
+            <P  class="d1_text">Контакты</P>
+            <p class="d2_text" href="">Енисейская ул., 5а, Февральск.</p  >
+            <p class="d2_text" href="">79622606932</p>
+            <p class="d2_text" href="">shopvitiaz@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="swiper-bundle.min.js"></script>
+    <script src="JavaScript.js"></script>
+</body>
+</html>

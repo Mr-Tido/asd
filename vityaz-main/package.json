@@ -1,0 +1,20 @@
+{
+	"name": "@xenofium/vityaz",
+	"version": "1.0.0",
+	"workspaces": {
+		"packages": [
+			"apps/*"
+		]
+	},
+	"repository": "https://gitlab.com/smoothbronx/vityaz",
+	"author": "smoothbronx <vlad.uhwatov@yandex.ru>",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"start:dev": "yarn start:database && yarn start:backend:debug",
+		"start:prod": "yarn start:database && yarn start:backend:prod",
+		"start:database": "yarn workspace @vityaz/database start",
+		"start:backend:debug": "yarn workspace @vityaz/backend start:debug",
+		"start:backend:prod": "yarn workspace @vityaz/backend start:prod"
+	}
+}
